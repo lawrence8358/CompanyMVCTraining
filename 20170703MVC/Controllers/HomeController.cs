@@ -66,5 +66,11 @@ namespace _20170703MVC.Controllers
             return View();
         }
 
+        [CheckKey]
+        public ActionResult GoProduct()
+        {
+            return View("Index");
+        }
+
     }
 }
