@@ -42,5 +42,17 @@ namespace _20170703MVC.Controllers
             //若View為共用的，就建立在共用Shared內
             return View("GoBack");
         }
+
+        public ActionResult File1()
+        {
+            //外部圖片超連結
+            return File(Server.MapPath("~/Content/my.png"), "image/png");
+        }
+
+        public ActionResult File2()
+        {
+            //下載檔案模式
+            return File(Server.MapPath("~/Content/my.png"), "image/png", "我的logo.png");
+        }
     }
 }
