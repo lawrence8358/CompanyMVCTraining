@@ -14,12 +14,21 @@ namespace _20170703MVC.Controllers
             return View();
         }
 
-        [ActionName("About.php")] //特例使用方式，建議少用，一律在路由定義比較好
+        //[ActionName("About.php")] //特例使用方式，建議少用，一律在路由定義比較好
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
-            return View("About");
+            return View();
+            //return View("About"); //自訂路由回傳View
+        }
+
+        [Route("Hello/{name}")]
+        public ActionResult About(string name)
+        {
+            ViewBag.Message = "Hello " + name;
+
+            return View(); 
         }
 
         public ActionResult Contact()
