@@ -24,7 +24,7 @@ namespace _20170703MVC.Controllers
         }
 
         const string HelloModule = "Hello"; //自定義屬性路由
-        [Route(HelloModule + "/{name}")]
+        [Route(HelloModule + "/{name?}")]
         public ActionResult About(string name)
         {
             ViewBag.Message = "Hello " + name;
