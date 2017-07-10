@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace _20170703MVC.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController 
     {
         public ActionResult Index()
         {
