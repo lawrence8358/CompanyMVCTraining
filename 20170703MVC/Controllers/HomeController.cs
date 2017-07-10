@@ -23,7 +23,8 @@ namespace _20170703MVC.Controllers
             //return View("About"); //自訂路由回傳View
         }
 
-        [Route("Hello/{name}")]
+        const string HelloModule = "Hello"; //自定義屬性路由
+        [Route(HelloModule + "/{name}")]
         public ActionResult About(string name)
         {
             ViewBag.Message = "Hello " + name;
