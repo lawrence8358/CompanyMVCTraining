@@ -18,5 +18,15 @@ namespace _20170703MVC.Controllers
         {
             return PartialView("Index");
         }
+
+        public ActionResult Content1()
+        {
+            return Content("測試Big5", "text/plain", System.Text.Encoding.GetEncoding("big5")); //上面的寫法等價底下的Content2，但編碼不同
+        }
+
+        public string Content2()
+        {
+            return "測試Unicode";
+        }
     }
 }
