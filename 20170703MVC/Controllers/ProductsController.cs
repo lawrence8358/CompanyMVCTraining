@@ -20,7 +20,7 @@ namespace _20170703MVC.Controllers
         {
             //return View(db.Product.Take(10));
             //改由Repository來操作
-            return View(_product.取得前10筆資料()); 
+            return View(_product.取得前10筆資料());
         }
 
         // GET: Products/Details/5
@@ -32,7 +32,7 @@ namespace _20170703MVC.Controllers
             }
             //Product product = db.Product.Find(id);
             //改由Repository來操作
-            Product product = _product.Find(id.Value); 
+            Product product = _product.Find(id.Value);
 
             if (product == null)
             {
@@ -97,7 +97,7 @@ namespace _20170703MVC.Controllers
                 //db.Entry(product).State = EntityState.Modified;
                 //db.SaveChanges();
                 //改由Repository來操作
-                var db = _product.UnitOfWork.Context; 
+                var db = _product.UnitOfWork.Context;
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
 
@@ -115,7 +115,7 @@ namespace _20170703MVC.Controllers
             }
             //Product product = db.Product.Find(id); 
             //改由Repository來操作
-            Product product = _product.Find(id.Value); 
+            Product product = _product.Find(id.Value);
 
             if (product == null)
             {
@@ -149,6 +149,31 @@ namespace _20170703MVC.Controllers
                 _product.UnitOfWork.Context.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [HttpPost]
+        public ActionResult BatchUpdate(List<ProductBatchView> data)
+        //public ActionResult BatchUpdate(ProductBatchView[] data)
+        {
+            if (ModelState.IsValid)
+            {
+                //ProductBatchView[] 此寫法在前端必須對應data[i].ProductId的格式，但在C# 6.0有問題
+                //因此目前的解法式移除Microsoft.CodeDom.Providers.DotNetCompilerPlatform
+                //解法可參考 http://haacked.com/archive/2008/10/23/model-binding-to-a-list.aspx/
+                foreach (var item in data)
+                {
+                    //不需要檢查是否有異動，EF的機制會自動檢查
+                    var product = _product.Find(item.ProductId);
+                    product.Active = item.Active;
+                    product.Price = item.Price;
+                }
+
+                _product.UnitOfWork.Commit();
+                return RedirectToAction("Index");
+            }
+
+            ViewData.Model = _product.取得前10筆資料();
+            return View("Index");
         }
     }
 }
