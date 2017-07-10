@@ -318,6 +318,7 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\AR\Index.cshtml" />
+    <Content Include="Views\Shared\GoBack.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Base\" />
