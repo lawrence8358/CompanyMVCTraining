@@ -16,6 +16,10 @@ namespace _20170703MVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+             
+            ViewEngines.Engines.Clear(); //移除View的查找
+            ViewEngines.Engines.Add(new RazorViewEngine());
+            ViewEngines.Engines.Add(new WebFormViewEngine());  //若無使用WebView可以不加入此View的搜尋引擎
         }
     }
 }
