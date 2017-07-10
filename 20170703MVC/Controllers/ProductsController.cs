@@ -90,19 +90,28 @@ namespace _20170703MVC.Controllers
         // 詳細資訊，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,ProductName,Price,Active,Stock")] Product product)
+        //public ActionResult Edit([Bind(Include = "ProductId,ProductName,Price,Active,Stock")] Product product)
+        public ActionResult Edit(int id, FormCollection form)
         {
-            if (ModelState.IsValid)
+            //此處的參數form沒有任何意義，只是為了要讓修改的Action多型跟Get不一樣 
+            var product = _product.Find(id);
+            if (TryUpdateModel(product, new string[] { "ProductId", "ProductName", "Price", "Active", "Stock" })) //延遲資料binding
             {
-                //db.Entry(product).State = EntityState.Modified;
-                //db.SaveChanges();
-                //改由Repository來操作
-                var db = _product.UnitOfWork.Context;
-                db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
-
+                _product.UnitOfWork.Commit();
                 return RedirectToAction("Index");
             }
+
+            //if (ModelState.IsValid)
+            //{
+            //    //db.Entry(product).State = EntityState.Modified;
+            //    //db.SaveChanges();
+            //    //改由Repository來操作
+            //    var db = _product.UnitOfWork.Context;
+            //    db.Entry(product).State = EntityState.Modified;
+            //    db.SaveChanges();
+
+            //    return RedirectToAction("Index");
+            //}
             return View(product);
         }
 
