@@ -13,5 +13,10 @@ namespace _20170703MVC.Controllers
         {
             return View();
         }
+
+        public ActionResult Index2()
+        {
+            return PartialView("Index");
+        }
     }
 }
