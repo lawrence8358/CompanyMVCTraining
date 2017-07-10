@@ -14,10 +14,16 @@ namespace _20170703MVC
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+               name: "Default",
+               url: "{controller}/{action}/{id}", //若此處出了大括號的字串，則在網址列就必須出現該字串，預設路由會失效
+               defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+           );
+
+            //routes.MapRoute(
+            //    name: "Default",
+            //    url: "{controller}/{action}.php/{id}", //若此處出了大括號的字串，則在網址列就必須出現該字串，預設路由會失效
+            //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            //);
         }
     }
 }
