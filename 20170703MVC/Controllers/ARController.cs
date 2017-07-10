@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _20170703MVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -53,6 +54,20 @@ namespace _20170703MVC.Controllers
         {
             //下載檔案模式
             return File(Server.MapPath("~/Content/my.png"), "image/png", "我的logo.png");
+        }
+
+        public ActionResult Json1()
+        {
+            ProductRepository reop = RepositoryHelper.GetProductRepository();
+            reop.UnitOfWork.Context.Configuration.LazyLoadingEnabled = false; //關閉導覽屬性，避免Loop的問題
+            return Json(reop.All().Take(5), JsonRequestBehavior.AllowGet); //AllowGet 
+        }
+
+        public ActionResult Json2()
+        {
+            ProductRepository reop = RepositoryHelper.GetProductRepository();
+            reop.UnitOfWork.Context.Configuration.LazyLoadingEnabled = false; //關閉導覽屬性，避免Loop的問題
+            return Json(reop.All().Take(5));  //安全性議題，關閉AllowGet，僅能透過Post來取得資料
         }
     }
 }
