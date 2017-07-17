@@ -10,4 +10,26 @@
 
     <text>單純秀文字</text>
 }
- 
+
+
+@{
+    int[] list = { 1, 2, 3, 4, 5 };
+
+    foreach (var item in list)
+    {
+        @item //輸出12345
+    }
+}
+
+@foreach (var item in list)
+{
+    @(item.ToString() + " ") //輸出1 2 3 4 5
+}
+
+
+<ul>
+    @foreach (var item in list)
+    {
+        <li>@item</li>
+    }
+</ul> 
