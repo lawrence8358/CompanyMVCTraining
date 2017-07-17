@@ -496,6 +496,9 @@
     <Content Include="Views\MB\ProductEdit.cshtml" />
     <Content Include="Views\Shared\Error_DbEntityValidationException.cshtml" />
     <Content Include="Views\VT\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutVT.cshtml" />
+    <Content Include="Views\VT\Home.cshtml" />
+    <Content Include="Views\VT\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Base\" />
