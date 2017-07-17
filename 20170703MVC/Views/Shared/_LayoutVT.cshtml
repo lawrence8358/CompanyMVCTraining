@@ -360,8 +360,28 @@
                     <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
                 </div>
             </noscript>
-            @RenderBody();
-        </div><!--/#content.span10-->
+            <!-- start: Content -->
+            <div id="content" class="span10">
+
+
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home"></i>
+                        <a href="index.html">Home</a>
+                        <i class="icon-angle-right"></i>
+                    </li>
+                    @RenderSection("nav", required: false)
+                    @if (!IsSectionDefined("nav"))
+                    {
+                        <li><a href="#">沒定義</a></li>
+                    }
+                </ul>
+                @RenderBody();
+
+            </div><!--/.fluid-container-->
+            <!-- end: Content -->
+
+            </div><!--/#content.span10-->
     </div><!--/fluid-row-->
 
     <div class="modal hide fade" id="myModal">
@@ -442,5 +462,6 @@
     <script src="~/js/custom.js"></script>
     <!-- end: JavaScript-->
 
+    @RenderSection("scripts", required: false)
 </body>
 </html>
