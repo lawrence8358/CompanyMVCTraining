@@ -1,0 +1,17 @@
+﻿@model Nullable<bool>
+
+@if (Model.HasValue)
+{
+    if (Model.Value)
+    {
+        @:上架
+    }
+    else
+    {
+        @:下架
+    }
+}
+else
+{
+    @:N/A
+}
