@@ -17,11 +17,31 @@ namespace _20170703MVC.Controllers
         ProductRepository _product = RepositoryHelper.GetProductRepository(); //改由Repository來操作
 
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(bool? ActiveFilter, int? ProductNameFilter)
         {
             //return View(db.Product.Take(10));
             //改由Repository來操作
-            return View(_product.取得前10筆資料());
+            //return View(_product.取得前10筆資料());
+
+            //若上方有傳遞參數，且名稱符合前端定義，MVC會自動ModelBinding，否則要自己傳遞資料
+            ViewBag.ActiveFilter = new SelectList(new string[] { "True", "False" });
+
+            var items = _product.All().Select(p => new { p.ProductId, p.ProductName });
+           ViewBag.ProductNameFilter = new SelectList(items, "ProductId", "ProductName");
+
+            var data = _product.All();
+
+            if (ActiveFilter.HasValue)
+            {
+                data = data.Where(p => p.Active == ActiveFilter.Value);
+            }
+            
+            if(ProductNameFilter.HasValue)
+            {
+                data = data.Where(p => p.ProductId == ProductNameFilter.Value);
+            }
+
+            return View(data.Take(10).ToList());
         }
 
         // GET: Products/Details/5
@@ -92,7 +112,7 @@ namespace _20170703MVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public ActionResult Edit([Bind(Include = "ProductId,ProductName,Price,Active,Stock")] Product product)
-        [HandleError(View= "Error_DbEntityValidationException", ExceptionType = typeof(DbEntityValidationException))]
+        [HandleError(View = "Error_DbEntityValidationException", ExceptionType = typeof(DbEntityValidationException))]
         public ActionResult Edit(int id, FormCollection form)
         {
             //此處的參數form沒有任何意義，只是為了要讓修改的Action多型跟Get不一樣 
@@ -103,7 +123,6 @@ namespace _20170703MVC.Controllers
             //    return RedirectToAction("Index");
             //}
 
-            //不檢查Model正確性，故意讓程式發生錯誤
             TryUpdateModel(product, new string[] { "ProductId", "ProductName", "Price", "Active", "Stock" });
             _product.UnitOfWork.Commit();
             return RedirectToAction("Index");

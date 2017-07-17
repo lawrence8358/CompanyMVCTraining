@@ -7,6 +7,10 @@
 <h2>Index</h2>
 
 <p>
+    @Html.DropDownList("ActiveFilter", null, "--請選擇--", new { onchange = "location.search = '?ActiveFilter='+this.options[this.selectedIndex].value" })
+    @Html.DropDownList("ProductNameFilter", null, "--請選擇--", new { onchange = "location.search = '?ProductNameFilter='+this.options[this.selectedIndex].value" })
+</p>
+<p>
     @Html.ActionLink("Create New", "Create")
 </p>
 @using (Html.BeginForm(new { action = "BatchUpdate" }))
