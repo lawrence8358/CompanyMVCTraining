@@ -150,6 +150,7 @@
     <Compile Include="Controllers\CheckKeyAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MBController.cs" />
+    <Compile Include="Controllers\OrderLinesController.cs" />
     <Compile Include="Controllers\VTController.cs" />
     <Compile Include="Models\ProductBatchView.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -499,6 +500,8 @@
     <Content Include="Views\Shared\_LayoutVT.cshtml" />
     <Content Include="Views\VT\Home.cshtml" />
     <Content Include="Views\VT\_ViewStart.cshtml" />
+    <Content Include="Views\Products\OrderLines.cshtml" />
+    <Content Include="Views\OrderLines\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Base\" />
