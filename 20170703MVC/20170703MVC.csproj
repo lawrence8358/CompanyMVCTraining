@@ -150,6 +150,7 @@
     <Compile Include="Controllers\CheckKeyAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MBController.cs" />
+    <Compile Include="Controllers\VTController.cs" />
     <Compile Include="Models\ProductBatchView.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -322,6 +323,7 @@
     <Content Include="Views\MB\Index.cshtml" />
     <Content Include="Views\MB\ProductEdit.cshtml" />
     <Content Include="Views\Shared\Error_DbEntityValidationException.cshtml" />
+    <Content Include="Views\VT\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Base\" />
