@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using _20170703MVC.Models;
+using System.Data.Entity.Validation;
 
 namespace _20170703MVC.Controllers
 {
@@ -91,6 +92,7 @@ namespace _20170703MVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public ActionResult Edit([Bind(Include = "ProductId,ProductName,Price,Active,Stock")] Product product)
+        [HandleError(View= "Error_DbEntityValidationException", ExceptionType = typeof(DbEntityValidationException))]
         public ActionResult Edit(int id, FormCollection form)
         {
             //此處的參數form沒有任何意義，只是為了要讓修改的Action多型跟Get不一樣 

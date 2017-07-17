@@ -1,0 +1,19 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@using System.Data.Entity.Validation;
+
+@{
+    var ex = Model.Exception as DbEntityValidationException;
+
+    ViewBag.ErrorMsg = "";
+    foreach (var error in ex.EntityValidationErrors)
+    {
+        foreach (var verr in error.ValidationErrors)
+        {
+            ViewBag.ErrorMsg += verr.PropertyName + " 驗證失敗：" + verr.ErrorMessage + "\r\n";
+        }
+    }
+
+    ViewBag.Title = ViewBag.ErrorMsg;
+}
+<h1 class="text-danger">@Model.ControllerName / @Model.ActionName 錯誤。</h1>
+<h2 class="text-danger">@ViewBag.ErrorMsg</h2>
