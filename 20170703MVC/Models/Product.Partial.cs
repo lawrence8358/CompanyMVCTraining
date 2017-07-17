@@ -1,5 +1,6 @@
 namespace _20170703MVC.Models
 {
+    using _20170703MVC.Models.InputValidations;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace _20170703MVC.Models
         [Required(ErrorMessage = "必填欄位 {0} 是必要輸入的")]
         [DisplayName("商品名稱")] //有兩個多形
         [StringLength(80, ErrorMessage="欄位長度不得大於 80 個字元")]
+        [ValidateTaiwanSIDAttribute]
         public string ProductName { get; set; }
 
         [Required]

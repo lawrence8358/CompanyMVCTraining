@@ -95,11 +95,16 @@ namespace _20170703MVC.Controllers
         {
             //此處的參數form沒有任何意義，只是為了要讓修改的Action多型跟Get不一樣 
             var product = _product.Find(id);
-            if (TryUpdateModel(product, new string[] { "ProductId", "ProductName", "Price", "Active", "Stock" })) //延遲資料binding
-            {
-                _product.UnitOfWork.Commit();
-                return RedirectToAction("Index");
-            }
+            //if (TryUpdateModel(product, new string[] { "ProductId", "ProductName", "Price", "Active", "Stock" })) //延遲資料binding
+            //{
+            //    _product.UnitOfWork.Commit();
+            //    return RedirectToAction("Index");
+            //}
+
+            //不檢查Model正確性，故意讓程式發生錯誤
+            TryUpdateModel(product, new string[] { "ProductId", "ProductName", "Price", "Active", "Stock" });
+            _product.UnitOfWork.Commit();
+            return RedirectToAction("Index");
 
             //if (ModelState.IsValid)
             //{
