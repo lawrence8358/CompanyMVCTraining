@@ -15,6 +15,7 @@ namespace _20170703MVC.Controllers
         private FabricsEntities db = new FabricsEntities();
 
         // GET: OrderLines
+        [ChildActionOnly]
         public ActionResult Index(int id)
         {
             var orderLine = db.OrderLine.Where(p => p.ProductId.Equals(id)).Include(o => o.Order).Include(o => o.Product);
