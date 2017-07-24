@@ -30,6 +30,7 @@ namespace _20170703MVC.Models
         //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)] //使用此方式變成所有Date欄位都必須要這麼做，改成Date Template取代
         public Nullable<System.DateTime> DateOfBirth { get; set; }
 
+        [UIHint("ClientStart")]
         public Nullable<double> CreditRating { get; set; }
 
         [StringLength(7, ErrorMessage = "欄位長度不得大於 7 個字元")]
