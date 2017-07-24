@@ -3,5 +3,6 @@
     ViewBag.Title = "Test";
 }
 
-<h2>Test</h2>
+<h2 id="nowId">Test</h2>
 
+@Ajax.ActionLink("取得日期時間", "GetTimeForAction", new AjaxOptions { UpdateTargetId = "nowId" })

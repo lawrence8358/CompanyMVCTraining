@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace _20170703MVC.Controllers
 {
-    public class HomeController : BaseController 
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
@@ -29,7 +29,7 @@ namespace _20170703MVC.Controllers
         {
             ViewBag.Message = "Hello " + name;
 
-            return View(); 
+            return View();
         }
 
         public ActionResult Contact()
@@ -42,6 +42,11 @@ namespace _20170703MVC.Controllers
         public ActionResult Test()
         {
             return View();
+        }
+
+        public ActionResult GetTimeForAction()
+        {
+            return Content(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.ffff"));
         }
 
         public ActionResult Login()
