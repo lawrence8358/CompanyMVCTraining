@@ -1,0 +1,12 @@
+﻿@model Nullable<System.DateTime>
+
+
+@*請注意，Template不能指定名稱，因此就用弱型別的方式，指定空字串*@
+@if (Model.HasValue)
+{
+    @Html.TextBox("", Model.Value.ToString("yyyy-MM-dd"), new { type = "date", @class = "form-control text-box single-line" })
+}
+else
+{
+    @Html.TextBox("", "", new { type = "date", @class = "form-control text-box single-line" })
+}
