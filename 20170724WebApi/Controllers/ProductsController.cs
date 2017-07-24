@@ -12,6 +12,9 @@ using _20170724WebApi.Models;
 
 namespace _20170724WebApi.Controllers
 {
+    /// <summary>
+    /// 商品資料
+    /// </summary>
     public class ProductsController : ApiController
     {
         private FabricsEntities db = new FabricsEntities();
@@ -21,6 +24,10 @@ namespace _20170724WebApi.Controllers
             db.Configuration.LazyLoadingEnabled = false; //關閉延遲載入，避免循環參考的問題
         }
 
+        /// <summary>
+        /// 取得商品清單
+        /// </summary>
+        /// <returns></returns>
         // GET: api/Products
         public IQueryable<Product> GetProduct()
         {
@@ -28,6 +35,11 @@ namespace _20170724WebApi.Controllers
         }
 
         // GET: api/Products/5
+        /// <summary>
+        /// 取得單筆商品資料
+        /// </summary>
+        /// <param name="id">商品識別碼</param>
+        /// <returns></returns>
         [ResponseType(typeof(Product))]
         public IHttpActionResult GetProduct(int id)
         {
@@ -41,6 +53,12 @@ namespace _20170724WebApi.Controllers
         }
 
         // PUT: api/Products/5
+        /// <summary>
+        /// 更新商品資料
+        /// </summary>
+        /// <param name="id">商品識別碼</param>
+        /// <param name="product">商品Model</param>
+        /// <returns></returns>
         [ResponseType(typeof(void))]
         public IHttpActionResult PutProduct(int id, Product product)
         {
@@ -76,6 +94,11 @@ namespace _20170724WebApi.Controllers
         }
 
         // POST: api/Products
+        /// <summary>
+        /// 新增商品資料
+        /// </summary>
+        /// <param name="product">商品Model</param>
+        /// <returns></returns>
         [ResponseType(typeof(Product))]
         public IHttpActionResult PostProduct(Product product)
         {
@@ -91,6 +114,11 @@ namespace _20170724WebApi.Controllers
         }
 
         // DELETE: api/Products/5
+        /// <summary>
+        /// 刪除商品資料
+        /// </summary>
+        /// <param name="id">商品識別碼</param>
+        /// <returns></returns>
         [ResponseType(typeof(Product))]
         public IHttpActionResult DeleteProduct(int id)
         {
