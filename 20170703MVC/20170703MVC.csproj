@@ -503,7 +503,7 @@
     <Content Include="Views\Products\OrderLines.cshtml" />
     <Content Include="Views\OrderLines\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Product.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ProductActive.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Base\" />

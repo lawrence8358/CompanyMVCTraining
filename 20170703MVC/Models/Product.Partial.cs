@@ -29,6 +29,7 @@ namespace _20170703MVC.Models
 
         [Required]
         [DisplayName("是否上架")]
+        [UIHint("ProductActive")] //套用的Template版型名稱
         public Nullable<bool> Active { get; set; }
 
         [Required]
