@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using _20170703MVC.Models;
+using PagedList;
 
 namespace _20170703MVC.Controllers
 {
@@ -15,10 +16,16 @@ namespace _20170703MVC.Controllers
         private FabricsEntities db = new FabricsEntities();
 
         // GET: Clients
-        public ActionResult Index()
+        public ActionResult Index(int pageNo = 1)
         {
-            var client = db.Client.Include(c => c.Occupation);
-            return View(client.Take(10));
+            //var client = db.Client.Include(c => c.Occupation);
+            //return View(client.Take(10));
+
+            //增加分頁功能
+            var client = db.Client.Include(c => c.Occupation).OrderBy(c => c.ClientId);
+            var data = client.ToPagedList(pageNo, 5);
+
+            return View(data);
         }
 
         // GET: Clients/Details/5
